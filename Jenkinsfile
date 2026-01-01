@@ -1,6 +1,6 @@
 @Library('Shared')_
 pipeline{
-    agent { label 'dev-server'}
+    agent { label '2'}
     
     stages{
         stage("Code clone"){
@@ -21,7 +21,8 @@ pipeline{
         }
         stage("Deploy"){
             steps{
-                deploy()
+                echo "This is deploying the code"
+                sh "docker compose down && docker compose up"
             }
         }
         
